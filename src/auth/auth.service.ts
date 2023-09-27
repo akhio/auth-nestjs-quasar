@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from 'src/users/users.service';
 import { JwtService } from '@nestjs/jwt';
 
@@ -13,7 +13,7 @@ export class AuthService {
     const user = await this.userService.findOne(email);
 
     if (user?.password !== passw) {
-      throw Error("The passwords doesn't match");
+      throw new UnauthorizedException();
     }
 
     const payload = { sub: user.userId, email: user.email };

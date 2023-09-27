@@ -14,6 +14,11 @@ export class UsersService {
             userId: 2,
             email: "akhio@gmail.com",
             password: "akhio"
+        },
+        {
+            userId: 3,
+            email: "temir@gmail.com",
+            password: "temir"
         }
     ]
 
@@ -21,3 +26,4 @@ export class UsersService {
         return this.users.find(user => user.email === email)
     }
 }
+

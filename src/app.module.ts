@@ -3,9 +3,21 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [UsersModule, AuthModule],
+  imports: [TypeOrmModule.forRoot({
+    type: 'postgres',
+    host: 'localhost',
+    port: 5432,
+    password: 'hasonkay05',
+    username: 'akhio',
+    entities: [],
+    database: 'auth-nodejs',
+    synchronize: true,
+    logging: true,
+  }),UsersModule, AuthModule, UserModule],
   controllers: [AppController],
   providers: [AppService],
 })
