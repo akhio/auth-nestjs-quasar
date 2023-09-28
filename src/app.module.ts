@@ -1,8 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from './users/users.module';
-import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { User } from './user/entities/user.entity';
@@ -18,7 +16,7 @@ import { User } from './user/entities/user.entity';
     database: 'auth-nodejs',
     synchronize: true,
     logging: true,
-  }),UsersModule, AuthModule, UserModule],
+  }), UserModule],
   controllers: [AppController],
   providers: [AppService],
 })

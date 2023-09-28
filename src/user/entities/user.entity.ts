@@ -5,24 +5,24 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 30 })
-  name: string;
+  // @Column({ type: 'varchar', length: 30 })
+  // name: string;
 
   @Column({ type: 'varchar', length: 40 })
   email: string;
 
-  @Column({ type: 'int' })
-  age: number;
+  // @Column({ type: 'int' })
+  // age: number;
 
   @Column({ type: 'varchar' })
   password: string;
 
-  @Column({ type: 'varchar' })
-  phoneNumber: string;
+  // @Column({ type: 'varchar' })
+  // phoneNumber: string;
 
-  @Column({ type: 'varchar' })
-  address: string;
+  // @Column({ type: 'varchar' })
+  // address: string;
 
-  @Column({ type: 'varchar' })
-  aboutMe: string;
+  // @Column({ type: 'varchar' })
+  // aboutMe: string;
 }

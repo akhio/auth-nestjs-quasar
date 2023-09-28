@@ -4,16 +4,16 @@ const passwordRegEx =
   /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
 
 export class CreateUserDto {
-  @IsString()
-  @MinLength(2, {message: 'Name must have at least 2 characters'})
-  name: string;
+  // @IsString()
+  // @MinLength(2, {message: 'Name must have at least 2 characters'})
+  // name: string;
 
   @IsNotEmpty()
   @IsEmail()
   email: string;
 
-  @IsInt()
-  age: number;
+  // @IsInt()
+  // age: number;
 
   @IsNotEmpty()
   @MinLength(8, {message: "Password must contain minimum 8 characters "})
@@ -26,13 +26,13 @@ export class CreateUserDto {
   })
   password: string;
 
-  @IsPhoneNumber()
-  phoneNumber: string;
+  // @IsPhoneNumber()
+  // phoneNumber: string;
 
-  @MaxLength(30)
-  address: string;
+  // @MaxLength(30)
+  // address: string;
 
-  @MinLength(20)
-  @MaxLength(500)
-  aboutMe: string;
+  // @MinLength(20)
+  // @MaxLength(500)
+  // aboutMe: string;
 }
