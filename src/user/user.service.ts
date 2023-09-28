@@ -40,6 +40,7 @@ export class UserService {
   updateUser(id: number, updateUserDto: UpdateUserDto): Promise<User> {
     const user: User = new User();
 
+    user.id = id;
     user.name = updateUserDto.name;
     user.email = updateUserDto.email;
     user.age = updateUserDto.age;
