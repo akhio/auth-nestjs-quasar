@@ -5,6 +5,7 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
+import { User } from './user/entities/user.entity';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -13,7 +14,7 @@ import { UserModule } from './user/user.module';
     port: 5432,
     password: 'hasonkay05',
     username: 'akhio',
-    entities: [],
+    entities: [User],
     database: 'auth-nodejs',
     synchronize: true,
     logging: true,

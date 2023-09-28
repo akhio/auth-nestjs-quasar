@@ -1,26 +1,58 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { User } from './entities/user.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class UserService {
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  constructor(
+    @InjectRepository(User) private readonly userRepository: Repository<User>,
+  ) {}
+
+  // This is function is used to create User in User Entity.
+  createUser(createUserDto: CreateUserDto): Promise<User> {
+    const user: User = new User();
+
+    user.name = createUserDto.name;
+    user.email = createUserDto.email;
+    user.age = createUserDto.age;
+    user.password = createUserDto.password;
+    user.phoneNumber = createUserDto.phoneNumber;
+    user.address = createUserDto.address;
+    user.aboutMe = createUserDto.aboutMe;
+
+    return this.userRepository.save(user);
   }
 
-  findAll() {
-    return `This action returns all user`;
+  // This function is used to get all the user's list
+  findAllUser(): Promise<User[]> {
+    return this.userRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  // This function used to get data of use whose id is passed in parameter
+  viewUser(id: number): Promise<User> {
+    return this.userRepository.findOneBy({ id });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  // This function is used to updated specific user whose id is passed in parameter along with passed updated data
+  updateUser(id: number, updateUserDto: UpdateUserDto): Promise<User> {
+    const user: User = new User();
+
+    user.name = updateUserDto.name;
+    user.email = updateUserDto.email;
+    user.age = updateUserDto.age;
+    user.password = updateUserDto.password;
+    user.phoneNumber = updateUserDto.phoneNumber;
+    user.address = updateUserDto.address;
+    user.aboutMe = updateUserDto.aboutMe;
+
+    return this.userRepository.save(user);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  // This function is used to remove or delete user from database.
+  removeUser(id: number): Promise<{ affected?: number }> {
+    return this.userRepository.delete(id);
   }
 }

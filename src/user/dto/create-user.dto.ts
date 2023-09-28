@@ -5,7 +5,6 @@ const passwordRegEx =
 
 export class CreateUserDto {
   @IsString()
-  @IsNotEmpty()
   @MinLength(2, {message: 'Name must have at least 2 characters'})
   name: string;
 
@@ -27,7 +26,6 @@ export class CreateUserDto {
   password: string;
 
   @IsPhoneNumber()
-  @IsNotEmpty()
   phoneNumber: string;
 
   @MaxLength(30)
