@@ -2,8 +2,9 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserModule } from './user/user.module';
-import { User } from './user/entities/user.entity';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
+import { User } from './users/entities/user.entity';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -16,7 +17,7 @@ import { User } from './user/entities/user.entity';
     database: 'auth-nodejs',
     synchronize: true,
     logging: true,
-  }), UserModule],
+  }), AuthModule, UsersModule],
   controllers: [AppController],
   providers: [AppService],
 })

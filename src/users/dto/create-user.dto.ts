@@ -3,8 +3,9 @@ import { IsEmail, IsInt, IsNotEmpty, IsPhoneNumber, IsString, Matches, MaxLength
 const passwordRegEx =
   /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
 
+
 export class CreateUserDto {
-  // @IsString()
+    // @IsString()
   // @MinLength(2, {message: 'Name must have at least 2 characters'})
   // name: string;
 
