@@ -14,8 +14,12 @@ export class UsersController {
 
   @UsePipes(new ValidationPipe())
   @Post()
-  createUser(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.createUser(createUserDto);
+  async createUser(@Body() createUserDto: CreateUserDto): Promise<any> {
+    await this.usersService.createUser(createUserDto);
+    return {
+      statusCode: 201,
+      res: 'User created successfully'
+    };
   }
 
 }
