@@ -1,1 +1,1 @@
-# jwt-auth-nestjs
+# auth-nestjs-quasar
