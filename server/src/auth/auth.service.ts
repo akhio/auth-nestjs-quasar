@@ -13,7 +13,10 @@ export class AuthService {
   async auth(email: string, passw: string) {
     const user = await this.usersService.findUser(email);
     if (!user) {
-      throw new UnauthorizedException('User not found');
+      return {
+        "Status Code": 401,
+        "message": "User not found"
+      }
     }
 
     const isMatch = await bcrypt.compare(passw, user.password);
